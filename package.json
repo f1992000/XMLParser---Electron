@@ -1,10 +1,11 @@
 {
-  "name": "electron-quick-start",
+  "name": "ctxDataCatch",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "Catch .ctx data",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-packager . --platform=win32  --arch=x64  --icon=Mushroom.ico --asar --ignore=node_modules/electron-* "
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
@@ -14,9 +15,13 @@
     "tutorial",
     "demo"
   ],
-  "author": "GitHub",
+  "author": "Jason Lin",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^1.8.4"
+    "electron": "^1.8.4",
+    "electron-packager": "^13.1.1"
+  },
+  "dependencies": {
+    "xml2js": "^0.4.19"
   }
 }
