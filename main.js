@@ -64,6 +64,9 @@ app.on('activate', function () {
 	var parser = new xml2js.Parser();
 
 	// parser XML chtch data--------------------------------
+	var Cadence_Array = [];
+	var Speen_Array = [];
+	var Watts_Array = [];
 	fs.readFile("data/activity.tcx",'utf-8',function(err,data){
 
 		// ":" transfer "_"
@@ -72,7 +75,19 @@ app.on('activate', function () {
 		//parser XML
 		parser.parseString(data, function (err, result) {
 			var data_path = result.TrainingCenterDatabase.Activities[0].Activity[0].Lap[0].Track[0];
+			for (i=0; i<data_path.Trackpoint.length; i++){
+				//catch data
+				Cadence_Array[i] = data_path.Trackpoint[i].Cadence[0];
+				Speen_Array[i] = data_path.Trackpoint[i].Extensions[0].ns3_TPX[0].ns3_Speed[0];
+				Watts_Array[i] = data_path.Trackpoint[i].Extensions[0].ns3_TPX[0].ns3_Watts[0];
+			}
 		});
 
-	})
+		// expore data.txt
+		var Cadence_Array_print = "Cadence:\r\n"+Cadence_Array+"\r\n\r\n";
+		var Speen_Array_print = "Speen:\r\n"+Speen_Array+"\r\n\r\n";
+		var Watts_Array_print = "Watts:\r\n"+Watts_Array;
+		var exportText = Cadence_Array_print+Speen_Array_print+Watts_Array_print;
+		fs.writeFile('./data/data_'+Math.floor(Date.now()/1000)+'.txt',exportText, 'utf-8',(err)=>{});  // write data.txt
 
+	})
