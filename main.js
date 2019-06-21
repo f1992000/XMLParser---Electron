@@ -58,3 +58,21 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+	var fs=require('fs');
+	var xml2js=require('xml2js');
+	var parser = new xml2js.Parser();
+
+	// parser XML chtch data--------------------------------
+	fs.readFile("data/activity.tcx",'utf-8',function(err,data){
+
+		// ":" transfer "_"
+		data =  data.replace(/:/g, "_");
+		
+		//parser XML
+		parser.parseString(data, function (err, result) {
+			var data_path = result.TrainingCenterDatabase.Activities[0].Activity[0].Lap[0].Track[0];
+		});
+
+	})
+
