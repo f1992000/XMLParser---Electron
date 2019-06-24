@@ -23,12 +23,15 @@ To clone and run this repository you'll need [Git](https://git-scm.com) and [Nod
 ```bash
 npm install
 ```
-2. Rename the XML data and place it in data/activity.tcx
-
-3. Build an application
+2. Build an application
 ```bash
 npm run build
 ```
+3. Rename the XML data and place it in data/activity.tcx
+
+4. Run ctxDataCatch.exe
+
+5. TXT file is generated in the /data
 
 Note: If you're using Linux Bash for Windows, [see this guide](https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/) or use `node` from the command prompt.
 
