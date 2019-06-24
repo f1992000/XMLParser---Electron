@@ -27,7 +27,7 @@ npm install
 ```bash
 npm run build
 ```
-3. Rename the XML data and place it in data/activity.tcx
+3. Rename the XML data and place it in /data/activity.tcx
 
 4. Run ctxDataCatch.exe
 
